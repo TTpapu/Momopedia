@@ -6,45 +6,148 @@
     <title>Momopedia</title>
     <link rel="stylesheet" href="estilo.css">
     <style>
-        /* Estilos básicos para ocultar/mostrar los meses y videos */
-        #month-menu {
-            display: block;
-            margin-top: 20px;
-        }
-        #video-player {
-            margin-top: 20px;
-        }
-        #content {
-            margin-top: 20px;
+        /* Estilos básicos */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1a1a1a;
+            color: #ddd;
             text-align: center;
         }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav ul li {
+            margin: 10px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            background-color: #555;
+            transition: background-color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: #777;
+        }
+
+        #month-menu, #content {
+            margin-top: 150px; /* Ajuste para que el contenido no quede oculto tras el header */
+        }
+        
+        #month-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        #month-menu ul li {
+            margin: 10px;
+        }
+
+        #month-menu ul li a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            background-color: #555;
+            transition: background-color 0.3s ease;
+        }
+
+        #month-menu ul li a:hover {
+            background-color: #777;
+        }
+
+        #content img {
+            max-width: 50%; /* Imagen más pequeña */
+            height: auto;
+        }
+
+        /* Añadir animaciones */
+        .fade-in {
+            animation: fadeIn 2s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .social-icons a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 24px;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: #ff69b4;
+        }
     </style>
+    <!-- Añadir enlace al icono de Instagram -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
     <header>
-        <h1 style="font-weight: bold; color: #ff69b4;">Momopedia</h1>
+        <h1>Momopedia</h1>
         <nav id="year-menu">
             <ul>
-                <li><a href="#" data-year="2022" onclick="showMonths(2022)">2022</a></li>
-                <!-- Agregar más años si es necesario -->
+                <!-- Lista de años del 2016 al 2024 --> 
+                <li><a href="#" data-year="2016">2016</a></li> 
+                <li><a href="#" data-year="2017">2017</a></li> 
+                <li><a href="#" data-year="2018">2018</a></li> 
+                <li><a href="#" data-year="2019">2019</a></li> 
+                <li><a href="#" data-year="2020">2020</a></li> 
+                <li><a href="#" data-year="2021">2021</a></li> 
+                <li><a href="#" data-year="2022">2022</a></li> 
+                <li><a href="#" data-year="2023">2023</a></li> 
+                <li><a href="#" data-year="2024">2024</a></li>
             </ul>
         </nav>
+        <div class="social-icons">
+            <a href="https://www.instagram.com/j_g59t" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
     </header>
-
     <!-- Aquí se mostrarán los meses al seleccionar un año -->
-    <div id="month-menu">
-        <!-- Los meses se cargarán dinámicamente al hacer clic en un año -->
-    </div>
-
+    <div id="month-menu"></div>
     <!-- Aquí se mostrará el video cuando se seleccione un mes -->
-    <div id="content">
+    <div id="content" class="fade-in">
         <!-- Este es el bloque que se muestra cuando no hay contenido multimedia -->
         <p>Estamos trabajando en eso.</p>
-        <!-- Aquí es donde se coloca la imagen con la ruta correcta -->
-        <img src="https://ttpapu.github.io/prueba0.1/carga.jpg" alt="Constructores" width="400">
+        <img src="https://ttpapu.github.io/prueba0.1/carga.jpg" alt="Constructores">
         <p>Aún nos falta información por poner. Recuerda que todavía es una versión beta. ¡Gracias por visitarnos!</p>
     </div>
-
+    
     <script>
 const mediaData = {
     "2016": {
